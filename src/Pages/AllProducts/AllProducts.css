@@ -1,0 +1,153 @@
+.all-product-container {
+  margin-top: 80px;
+}
+.star {
+  color: #ff9933;
+  font-size: larger;
+}
+.sorting {
+  justify-content: end;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #000000 !important;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quantity-input {
+  border: 1px solid rgb(188, 188, 188);
+  border-radius: 5px;
+  padding: 8px;
+  width: 46px;
+}
+
+img.product-img {
+  width: 90%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+img.product-img:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.res_css_tex {
+  font-size: 20px;
+  color: #000000;
+}
+.css_res_contain {
+  color: #000000;
+}
+
+.css_res_contain_allpro {
+  width: 75%;
+  color: #000000;
+}
+.css_res_contain_allphai {
+  width: 25%;
+  color: #000000;
+}
+.css_product_price {
+  margin-top: 10px;
+}
+img.product-img {
+  width: 100%;
+}
+.all-grid-product-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.css_product_price {
+  font-size: 18px;
+}
+.navigator {
+  margin-top: 10px;
+}
+@media only screen and (max-width: 1200px) {
+  .res_css_tex {
+    font-size: 18px !important;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .css_res_contain {
+    flex-direction: column;
+    color: #000000;
+  }
+  .css_res_contain_allpro {
+    width: 100%;
+    color: #000000;
+  }
+  .css_res_contain_allphai {
+    width: 100%;
+    color: #000000;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .all-grid-product-container {
+    flex: 0 0 auto;
+    justify-content: center;
+    display: flex;
+  }
+  img.product-img {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .navigator {
+    margin-top: 0px;
+  }
+  .row.all-products {
+    margin: 0;
+    display: flex;
+  }
+  .css_product_price {
+    font-size: 15px;
+  }
+  .page-title {
+    margin-top: 20px !important;
+  }
+  .woocommerce-ordering {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 447px) {
+  .all-grid-product-container {
+    justify-content: center;
+    margin-top: 50px;
+  }
+  .page-title {
+    display: flex;
+    justify-content: center;
+  }
+  .sorting {
+    justify-content: center !important;
+    margin-top: 20px;
+  }
+  .woocommerce-ordering {
+    width: 82%;
+  }
+  .res_css_tex {
+    margin: 0 auto !important;
+  }
+  .categories-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .form-label {
+    display: flex;
+    justify-content: center;
+  }
+}

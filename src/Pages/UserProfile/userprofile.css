@@ -1,0 +1,12 @@
+@media only screen and (max-width: 768px) {
+  .card-body,
+  .email-block,
+  .password-block,
+  .balance-block {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-body {
+    align-items: center;
+  }
+}

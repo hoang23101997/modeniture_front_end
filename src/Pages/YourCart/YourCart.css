@@ -1,0 +1,138 @@
+.font_tex_cart {
+  font-size: 20px;
+}
+.res_text_t {
+  font-size: 20px;
+}
+.hw_div_res {
+  width: 4.7%;
+}
+
+.css_text {
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.font_continue {
+  font-size: 15px;
+}
+.css_product_name {
+  font-size: 18px;
+  margin-left: 10px;
+}
+.css_product_price_cart,
+.subtotal-price {
+  font-size: 18px;
+}
+
+.res_congtru {
+  width: 40px;
+  height: 40px;
+}
+.res_so {
+  padding: 40px;
+}
+.subtotal_css {
+  font-size: 20px;
+}
+.cartol {
+  width: 436px;
+}
+@media only screen and (max-width: 992px) {
+  .res_congtru {
+    width: 30px;
+    height: 30px;
+  }
+  .res_so {
+    padding: 15px;
+  }
+  .res_text_t,
+  .subtotal_css {
+    font-size: 18px;
+  }
+  .css_product_name,
+  .css_product_price_cart,
+  .subtotal-price {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .res_congtru {
+    width: 30px;
+    height: 20px;
+  }
+  .res_so {
+    padding: 10px;
+  }
+  .img-in-cart {
+    height: 50px !important;
+    width: 50px !important;
+    margin: 10px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .img-in-cart {
+    height: 90px !important;
+    width: 80px !important;
+    margin-left: 5px;
+  }
+  .trash-can {
+    justify-content: start;
+  }
+  .css_product_price_cart,
+  .res_text_t,
+  .product-price-in-cart {
+    display: none;
+  }
+  #quantity-in-cart,
+  #subtotal-in-cart,
+  #total-cart-container {
+    display: none !important;
+  }
+  .res_text_t {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .quantity-container {
+    margin-left: 120px;
+    margin-top: -115px;
+  }
+  .subtotal_css {
+    margin-left: 120px;
+    margin-top: -60px;
+  }
+  .subtotal-price {
+    font-size: 13px;
+  }
+  .res_congtru {
+    width: 20px;
+  }
+  .res_so {
+    font-size: 13px;
+    padding: 10px;
+  }
+  .css_product_name {
+    font-size: 13px;
+    margin-top: -60px;
+    margin-left: 10px;
+  }
+  .wrapper-product-in-cart {
+    align-items: start !important;
+    flex-direction: column;
+    height: 100px;
+    padding-top: 3px;
+    padding-left: 5px;
+  }
+  #cart-total-container {
+    display: flex;
+    justify-content: center;
+  }
+  .cartol {
+    display: flex;
+    width: 250px;
+    justify-content: center;
+  }
+}
