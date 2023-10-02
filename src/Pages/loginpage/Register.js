@@ -46,10 +46,10 @@ const Register = () => {
   return (
     <div className="d-flex pt-5 pb-2 align-items-center justify-content-center bg-dark-subtle login-container">
       <div
-        className="container d-flex align-items-center justify-content-center mt-5 bg-white w-50"
+        className="container d-flex align-items-center justify-content-center mt-5 bg-white w-75"
         style={{ height: "500px" }}
       >
-        <form className="w-100" onSubmit={handleSubmit}>
+        <form className="w-100 p-md-5 p-2" onSubmit={handleSubmit}>
           <div className="fs-2 fw-bold mb-2">Register New Account</div>
           <div className="form-item mb-3">
             <label className="form-label">Username</label>

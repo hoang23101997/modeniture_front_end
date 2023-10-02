@@ -51,7 +51,7 @@ const Login = () => {
         className="container d-flex align-items-center justify-content-center mt-5 bg-white w-75"
         style={{ height: "400px" }}
       >
-        <form className="w-100 p-3" onSubmit={handleSubmit}>
+        <form className="w-100 p-md-5 p-2" onSubmit={handleSubmit}>
           <div className="fs-3 fw-bold mb-2">My account</div>
           <div className="form-item mb-3">
             <label className="form-label">Email</label>

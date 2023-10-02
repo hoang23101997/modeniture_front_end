@@ -18,20 +18,16 @@ function CheckOut() {
     window.scrollTo(0, 0);
   }, []);
 
-  const {
-    cartItem,
-    cartSubTotal,
-    totalItem,
-    cartTotal,
-    shippingFee,
-    onSubmitOrder,
-  } = useContext(Context);
+  const { cartItem, cartSubTotal, totalItem, cartTotal, shippingFee } =
+    useContext(Context);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [shipAdress, setShipAdress] = useState("");
   const handleChangeUserName = (event) => {
     setUsername(event.target.value);
+    console.log(username);
   };
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -60,10 +56,22 @@ function CheckOut() {
     const API = "/payments";
     try {
       await handleGetData.handleData(API, data, "post").then((res) => {
-        if (res && res.status === 200 && res.data) {
+        if (
+          res &&
+          res.status === 200 &&
+          res.data &&
+          username &&
+          phone &&
+          email &&
+          shipAdress
+        ) {
           alert(res.data.message);
+          navigate("/");
         }
-        navigate("/");
+        if (!username || !phone || !email || !shipAdress) {
+          alert("You must fill all required* information");
+        }
+
         localStorage.removeItem("cart");
       });
     } catch (error) {
@@ -89,193 +97,241 @@ function CheckOut() {
               <div className="col-12 col-lg-6">
                 {/* className=" me-4 pe-3 position-relative" */}
                 {/* <div > */}
-                <div className="">
-                  <div className="w-100">
-                    <div className="position-relative">
-                      <h1 className="mb-4 text-capitalize">
-                        Customer information
-                      </h1>
-                      <div className="mb-3">
+
+                <div className="w-100">
+                  <div className="position-relative">
+                    <h1 className="mb-4 text-capitalize">
+                      Customer information
+                    </h1>
+                    <form class="row g-3 needs-validation p-1" noValidate>
+                      <div class="col-md-6">
+                        <label
+                          for="validationCustom01"
+                          class="form-label text-danger"
+                        >
+                          Username*
+                        </label>
                         <input
-                          required
                           type="text"
                           className="form-control"
-                          // id="floatingInput"
-                          placeholder="Name *"
+                          id="validationCustom01"
+                          placeholder="Mark"
                           value={username}
                           onChange={handleChangeUserName}
-                        />
-                      </div>
-
-                      <div className="mb-3">
-                        <input
                           required
+                        />
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                      <div class="col-md-6">
+                        <label
+                          for="validationCustom02"
+                          class="form-label text-danger"
+                        >
+                          Phone*
+                        </label>
+                        <input
                           type="phone"
-                          className="form-control"
-                          // id="floatingInput"
-                          placeholder="Phone *"
+                          class="form-control"
+                          id="validationCustom02"
+                          placeholder="+01 912 30 3114"
+                          required
                           value={phone}
                           onChange={handleChangePhone}
                         />
+                        <div class="valid-feedback">Looks good!</div>
                       </div>
-                      <div className="mb-3">
+                      <div class="col-12">
+                        <label
+                          for="validationCustomUsername"
+                          class="form-label text-danger"
+                        >
+                          Email*
+                        </label>
+                        <div class="input-group has-validation">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="validationCustomUsername"
+                            aria-describedby="inputGroupPrepend"
+                            required
+                            value={email}
+                            onChange={handleChangeEmail}
+                          />
+                          <div class="invalid-feedback">
+                            Please fill with an valid email.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <label
+                          for="validationCustom03"
+                          class="form-label text-danger"
+                        >
+                          Shipping Address*
+                        </label>
                         <input
+                          type="text"
+                          class="form-control"
+                          id="validationCustom03"
                           required
-                          className="form-control"
-                          // id="floatingInput"
-                          placeholder="Shipping Address *"
                           value={shipAdress}
                           onChange={handleChangeAdress}
                         />
+                        <div class="invalid-feedback">
+                          Please provide a valid city.
+                        </div>
                       </div>
 
-                      <div className="mb-3">
-                        <input
-                          required
-                          type="email"
+                      <div class="col-12">
+                        <label for="validationCustom03" class="form-label">
+                          Your message
+                        </label>
+                        <textarea
                           className="form-control"
-                          // id="floatingInput"
-                          placeholder="Email *"
-                          value={email}
-                          onChange={handleChangeEmail}
-                        />
+                          placeholder="Enter your message..."
+                          name="message"
+                        ></textarea>
+                      </div>
+                      <div class="col-12">
+                        <label
+                          for="validationCustom03"
+                          className="form-label text-danger"
+                        >
+                          Required Infomation*
+                        </label>
                       </div>
 
-                      <textarea
-                        className="form-control"
-                        placeholder="Enter your message..."
-                        name="message"
-                      ></textarea>
-                    </div>
-                  </div>
-
-                  <h2 className="mt-4">Your Order </h2>
-                  {/* (                bg-primary */}
-                  <div className="mt-4 w-100">
-                    {/* className="border border-dark-subtle rounded" */}
-                    <div className="position-relative">
-                      {/* bg-primary */}
-                      {/* cartEmpty */}
-                      {cartEmpty ? (
-                        <div>
-                          <div className="d-flex justify-content-start mt-3 mb-3">
-                            Your order is currently empty. Come and see our
-                            products...
-                          </div>
-                          <div>
-                            <Link
-                              to="/all-products"
-                              className="nav-link active"
-                            >
-                              <button className="btn btn-dark mt-3">
-                                {" "}
-                                Return to shop
-                              </button>
-                            </Link>
-                          </div>
-                        </div>
-                      ) : (
-                        <div>
-                          <div className="position-relative col-12  border border-dark-subtle rounded">
-                            <div className="row p-2 pt-3 pb-3">
-                              <div className="col fs-6 ">Product</div>
-                              <div className="col-2 fs-6 d-flex justify-content-end">
-                                Subtotal
+                      <h2 className="mt-4">Your Order </h2>
+                      {/* (                bg-primary */}
+                      <div className="mt-4 w-100">
+                        {/* className="border border-dark-subtle rounded" */}
+                        <div className="position-relative">
+                          {/* bg-primary */}
+                          {/* cartEmpty */}
+                          {cartEmpty ? (
+                            <div>
+                              <div className="d-flex justify-content-start mt-3 mb-3">
+                                Your order is currently empty. Come and see our
+                                products...
+                              </div>
+                              <div>
+                                <Link
+                                  to="/all-products"
+                                  className="nav-link active"
+                                >
+                                  <button className="btn btn-dark mt-3">
+                                    {" "}
+                                    Return to shop
+                                  </button>
+                                </Link>
                               </div>
                             </div>
-                            {/* style={{backgroundColor: "red"}} */}
-
-                            <div className="w-100">
-                              {cartItem.map((item) => {
-                                return (
-                                  <div
-                                    key={item.product.id}
-                                    // border-top bg-success row  border rounded border-secondary-subtle
-                                    className="d-flex border-top p-2"
-                                  >
-                                    <div className="col text-start d-flex align-items-center">
-                                      <img
-                                        style={{ width: 80 }}
-                                        className="ms-1"
-                                        src={item.product.img}
-                                      ></img>
-                                      <div className="ms-4">
-                                        {item.product.name}
-                                      </div>
-                                    </div>
-
-                                    <div className="col-2 d-flex align-items-center">
-                                      <div
-                                        className="p-3"
-                                        key={item.product.id}
-                                      >
-                                        x{item.amount}
-                                      </div>
-                                    </div>
-                                    <div className="col-2 d-flex align-items-center justify-content-end me-1">
-                                      ${item.amount * item.product.price}
-                                    </div>
+                          ) : (
+                            <div>
+                              <div className="position-relative col-12  border border-dark-subtle rounded">
+                                <div className="row p-2 pt-3 pb-3">
+                                  <div className="col fs-6 ">Product</div>
+                                  <div className="col-2 fs-6 d-flex justify-content-end">
+                                    Subtotal
                                   </div>
-                                );
-                              })}
-                            </div>
+                                </div>
+                                {/* style={{backgroundColor: "red"}} */}
 
-                            {/* border-top border-bottom */}
+                                <div className="w-100">
+                                  {cartItem.map((item) => {
+                                    return (
+                                      <div
+                                        key={item.product.id}
+                                        // border-top bg-success row  border rounded border-secondary-subtle
+                                        className="d-flex border-top p-2"
+                                      >
+                                        <div className="col text-start d-flex align-items-center">
+                                          <img
+                                            style={{ width: 80 }}
+                                            className="ms-1"
+                                            src={item.product.img}
+                                          ></img>
+                                          <div className="ms-4">
+                                            {item.product.name}
+                                          </div>
+                                        </div>
 
-                            <div className="d-flex border-top border-bottom p-2 pt-3 pb-3">
-                              <div className="col fs-6">SubTotal</div>
-                              <div className="col-2 d-flex justify-content-end me-1 fs-6">
-                                ${cartSubTotal}
+                                        <div className="col-2 d-flex align-items-center">
+                                          <div
+                                            className="p-3"
+                                            key={item.product.id}
+                                          >
+                                            x{item.amount}
+                                          </div>
+                                        </div>
+                                        <div className="col-2 d-flex align-items-center justify-content-end me-1">
+                                          ${item.amount * item.product.price}
+                                        </div>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+
+                                {/* border-top border-bottom */}
+
+                                <div className="d-flex border-top border-bottom p-2 pt-3 pb-3">
+                                  <div className="col fs-6">SubTotal</div>
+                                  <div className="col-2 d-flex justify-content-end me-1 fs-6">
+                                    ${cartSubTotal}
+                                  </div>
+                                </div>
+
+                                {/*border-bottom  */}
+                                <div className="d-flex border-bottom p-2 pt-3 pb-3">
+                                  <div className="col fs-6">Shipping</div>
+                                  <div className="col-2 d-flex justify-content-end me-1 fs-6">
+                                    ${shippingFee}
+                                  </div>
+                                </div>
+                                <div className="d-flex p-2 pt-3 pb-3">
+                                  <div className="col fw-semibold fs-5">
+                                    Total
+                                  </div>
+                                  <div className="col-2 d-flex justify-content-end me-1 fs-5 fw-semibold">
+                                    ${cartTotal}
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="d-flex mt-4 p-0">
+                                <input
+                                  type="text"
+                                  className="form-control w-100"
+                                  placeholder="Coupon code"
+                                  aria-label="Coupon code"
+                                  aria-describedby="button-addon2"
+                                ></input>
+                                <button
+                                  className="btn btn-dark w-50 ms-3 p-2"
+                                  type="button"
+                                  id="button-addon2"
+                                >
+                                  Apply
+                                </button>
+                              </div>
+
+                              <div className="d-flex mt-5 p-0 ">
+                                <button
+                                  className="d-flex btn btn-dark w-100 p-2 justify-content-center align-items-center"
+                                  type="button"
+                                  id="button-addon2"
+                                  onClick={onCheckOut}
+                                >
+                                  {" "}
+                                  <FaLock className="me-2" />
+                                  Place Order ${cartTotal}
+                                </button>
                               </div>
                             </div>
-
-                            {/*border-bottom  */}
-                            <div className="d-flex border-bottom p-2 pt-3 pb-3">
-                              <div className="col fs-6">Shipping</div>
-                              <div className="col-2 d-flex justify-content-end me-1 fs-6">
-                                ${shippingFee}
-                              </div>
-                            </div>
-                            <div className="d-flex p-2 pt-3 pb-3">
-                              <div className="col fw-semibold fs-5">Total</div>
-                              <div className="col-2 d-flex justify-content-end me-1 fs-5 fw-semibold">
-                                ${cartTotal}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="d-flex mt-4 p-0">
-                            <input
-                              type="text"
-                              className="form-control w-100"
-                              placeholder="Coupon code"
-                              aria-label="Coupon code"
-                              aria-describedby="button-addon2"
-                            ></input>
-                            <button
-                              className="btn btn-dark w-50 ms-3 p-2"
-                              type="button"
-                              id="button-addon2"
-                            >
-                              Apply
-                            </button>
-                          </div>
-
-                          <div className="d-flex mt-5 p-0 ">
-                            <button
-                              className="d-flex btn btn-dark w-100 p-2 justify-content-center align-items-center"
-                              type="button"
-                              id="button-addon2"
-                              onClick={onCheckOut}
-                            >
-                              {" "}
-                              <FaLock className="me-2" />
-                              Place Order ${cartTotal}
-                            </button>
-                          </div>
+                          )}
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
