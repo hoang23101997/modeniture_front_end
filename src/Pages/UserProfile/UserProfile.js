@@ -49,7 +49,7 @@ const UserProfile = () => {
             <div className="d-flex align-items-center justify-content-center">
               <div className="d-flex">
                 <div className="d-flex justify-content-center flex-column">
-                  <div className="container">
+                  <div className="">
                     <h1 className="text-capitalize">Your information</h1>
                     <div className="mb-3">
                       <div className="card mt-4">
@@ -72,7 +72,7 @@ const UserProfile = () => {
                               <p className=" ms-md-1 card-text fs-5 fw-semibold">
                                 Your email: {email}
                               </p>
-                              <button className="btn btn-dark">
+                              <button className="ms-3 me-3 btn btn-dark">
                                 Change Email
                               </button>
                             </div>
@@ -80,7 +80,7 @@ const UserProfile = () => {
                               <p className="ms-md-1 card-text fs-5 fw-semibold text-danger">
                                 Your Password: *******
                               </p>
-                              <button className="btn btn-danger">
+                              <button className="ms-3 me-3 btn btn-danger">
                                 Change Password
                               </button>
                             </div>
@@ -88,7 +88,9 @@ const UserProfile = () => {
                               <p className="ms-md-1 card-text fs-5 fw-semibold text-success">
                                 Your Balance: ****,**$
                               </p>
-                              <button className="btn btn-success">Show</button>
+                              <button className="ms-3 me-3 btn btn-success">
+                                Show
+                              </button>
                             </div>
                           </div>
                         </div>

@@ -146,8 +146,4 @@ img.product-img {
     justify-content: center;
     margin-bottom: 10px;
   }
-  .form-label {
-    display: flex;
-    justify-content: center;
-  }
 }

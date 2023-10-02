@@ -49,7 +49,7 @@ const Register = () => {
         className="container d-flex align-items-center justify-content-center mt-5 bg-white w-50"
         style={{ height: "500px" }}
       >
-        <form className="w-75" onSubmit={handleSubmit}>
+        <form className="w-100" onSubmit={handleSubmit}>
           <div className="fs-2 fw-bold mb-2">Register New Account</div>
           <div className="form-item mb-3">
             <label className="form-label">Username</label>
@@ -82,7 +82,7 @@ const Register = () => {
               value={values.password}
             ></input>
           </div>
-          
+
           {error && <p style={{ color: "red", margin: "10px 0" }}>{error}</p>}
           <button className="btn btn-dark mt-3" type="submit">
             {loading ? "Submitting..." : "Register"}

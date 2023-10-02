@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
-
 import "././Pages/Homepage/home.css";
 import "./App.css";
 import Login from "./Pages/loginpage/Loginpage";
@@ -55,10 +54,11 @@ const HomeScreen = () => {
     auth: { isAuthenticate },
   } = useContext(AuthContext);
   const [showMenu, setShowMenu] = useState(false);
-
+  const [showsubMenu, setShowsubMenu] = useState(false);
   const handleClose = () => setShowMenu(!showMenu);
   const handleShow = () => setShowMenu(true);
-
+  const handleShowSub = () => setShowsubMenu((current) => !current);
+  console.log(showsubMenu);
   return (
     <div>
       {" "}
@@ -230,35 +230,44 @@ const HomeScreen = () => {
                               id="categories"
                               className="dropdown-toggle bg-body border-top-0 border-end-0 border-start-0"
                               type="button"
+                              onClick={handleShowSub}
                             >
                               Our Categories
                             </button>
-                            <div className="dropdown-menu">
-                              <div>
-                                <Link
-                                  to="/all-products/furniture"
-                                  className="dropdown-item p-3"
-                                >
-                                  Furniture
-                                </Link>
+                            {showsubMenu && (
+                              <div
+                                className="dropdown-submenu"
+                                style={{
+                                  background: "rgba(255,255,255,.3)",
+                                  transition: "all 2s",
+                                }}
+                              >
+                                <div className="ms-3 me-3 border-bottom">
+                                  <Link
+                                    to="/all-products/furniture"
+                                    className="dropdown-item p-3"
+                                  >
+                                    Furniture
+                                  </Link>
+                                </div>
+                                <div className="ms-3 me-3 border-bottom">
+                                  <Link
+                                    to="/all-products/decoration"
+                                    className="dropdown-item p-3"
+                                  >
+                                    Decoration
+                                  </Link>
+                                </div>
+                                <div className="ms-3 me-3 border-bottom">
+                                  <Link
+                                    to="/all-products/frame&poster"
+                                    className="dropdown-item p-3"
+                                  >
+                                    Posters
+                                  </Link>
+                                </div>
                               </div>
-                              <div>
-                                <Link
-                                  to="/all-products/decoration"
-                                  className="dropdown-item p-3"
-                                >
-                                  Decoration
-                                </Link>
-                              </div>
-                              <div>
-                                <Link
-                                  to="/all-products/frame&poster"
-                                  className="dropdown-item p-3"
-                                >
-                                  Posters
-                                </Link>
-                              </div>
-                            </div>
+                            )}
                           </div>
                         </div>
                       </li>

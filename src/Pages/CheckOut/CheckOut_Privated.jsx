@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../Context/Context";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaLock,
   FaUserShield,

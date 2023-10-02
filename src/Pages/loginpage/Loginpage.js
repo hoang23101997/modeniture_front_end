@@ -46,13 +46,13 @@ const Login = () => {
   }
 
   return (
-    <div className="d-flex pt-5 pb-2 align-items-center justify-content-center bg-dark-subtle login-container">
+    <div className="d-flex pt-5 pb-2 align-items-center justify-content-center bg-dark-subtle login-container pe-md-5 ps-md-5">
       <div
-        className="container d-flex align-items-center justify-content-center mt-5 bg-white w-50"
+        className="container d-flex align-items-center justify-content-center mt-5 bg-white w-75"
         style={{ height: "400px" }}
       >
-        <form className="w-75" onSubmit={handleSubmit}>
-          <div className="fs-2 fw-bold mb-2">My account</div>
+        <form className="w-100 p-3" onSubmit={handleSubmit}>
+          <div className="fs-3 fw-bold mb-2">My account</div>
           <div className="form-item mb-3">
             <label className="form-label">Email</label>
             <input
