@@ -1,5 +1,5 @@
 import axiosInstance from "./axiosinstance";
-const baseUrl = "http://localhost:3001/api/v1";
+const baseUrl = "https://modeniture-backend-83b4.onrender.com/api/v1";
 class DataAPI {
   handleData = async (url, data, method, isFile, onProgress) => {
     return await axiosInstance(`${baseUrl}${url}`, {

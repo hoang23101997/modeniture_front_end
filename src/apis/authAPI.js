@@ -1,5 +1,5 @@
 import axiosInstance from "./axiosinstance"
-const baseUrl = "http://localhost:3001/api/v1"
+const baseUrl = "https://modeniture-backend-83b4.onrender.com/api/v1"
 const authAPI = {
     login: (loginValues) => axiosInstance.post(`${baseUrl}/auth/login`, loginValues),
     register: (registerValues) => axiosInstance.post(`${baseUrl}/auth/register`, registerValues),
